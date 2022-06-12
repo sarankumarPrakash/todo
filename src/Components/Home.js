@@ -42,7 +42,6 @@ const Home = () => {
                 onClick={handleClose}
             >
                 <TextField id="outlined-basic" label="Outlined" variant="outlined" />            </Backdrop>
-
             <DataGrid
                 style={{ height: 400, width: "80%" }}
 
