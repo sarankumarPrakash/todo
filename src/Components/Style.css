@@ -1,9 +1,16 @@
-/* body{
-    background-color: blueviolet;
-} */
-.table{
-    height:400;
-     width:"80%"
+.button{
+    padding: 7px;
+    margin: 5% 87% 2% 5%;
 }
-.buttonStyle{
-    border-radius: 54%}
+.text{
+    color: #6f6fd6;
+    align-self: center;
+    vertical-align: super;
+    margin-left: 4px;
+}
+
+.button:hover, .text:hover{
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: aqua;
+}

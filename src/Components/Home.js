@@ -1,56 +1,55 @@
 import React from "react";
-import { DataGrid } from '@mui/x-data-grid';
-import Button from '@mui/material/Button';
 import '../Components/Style.css'
-import Backdrop from '@mui/material/Backdrop';
-import TextField from '@mui/material/TextField';
-
-const columns = [
-    { field: 'id', headerName: 'Id', width: 100 },
-    { field: 'taskName', headerName: 'Task Name', width: 150 },
-    { field: 'action', headerName: 'Action', width: 150 },
-]
-const rows = [
-    { id: 1, taskName: 'Snow' },
-    { id: 2, taskName: 'Lannister' },
-    { id: 3, taskName: 'Lannister' },
-
-];
-
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import ListData from "./ListData";
 
 
 
 
 const Home = () => {
-    const [open, setOpen] = React.useState(false);
-    const handleCall = () => {
-        setOpen(!open);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
+
+    const[cardData, setCardData]=React.useState([])
+    const[count,setCount]=React.useState(1)
+
+    const handleAddCard = (value) => {
+
+        let val=[];
+       let array={
+           index:count,
+           isAddMode: true,
+           isEditMode:true
+       };
+       setCount(count + 1)
+        val.push(array)
+        setCardData(cardData=>[...cardData,val[0]])
+    }
 
     return (
-        <div >
-            <Button variant="contained"
-                style={{ marginBottom: "5%", float: "right", marginRight: "20%", marginTop: "2%" }}
-                onClick={handleCall}>
-                Add Task
-            </Button>
-            <Backdrop
-                open={open}
-                onClick={handleClose}
-            >
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />            </Backdrop>
-            <DataGrid
-                style={{ height: 400, width: "80%" }}
+        <div>
 
-                rows={rows}
-                columns={columns}
-                // rowsPerPageOptions={[5]}
-                checkboxSelection
-            />
-        </div>
+        
+        <div className="button" onClick={()=>handleAddCard(true)} >
+            <AddCircleIcon color="primary" /> <span className="text">add a Task</span>
+
+            </div>
+
+         <div>
+         {/* {cardData.length>0?  
+            
+            // <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+            
+            
+            // :'' }
+
+*/}
+            {cardData.map((cardNumber) => (
+          <ListData card={[cardNumber]} />
+        ))}
+         </div>
+         
+            
+       
+       </div>
     )
 }
 
